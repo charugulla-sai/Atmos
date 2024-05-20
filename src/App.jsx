@@ -1,7 +1,10 @@
 import './App.css';
+import Header from './components/Header/Header';
 
 function App() {
-  return <></>;
+  return <div className='bg-blue '>
+    <Header/>
+  </div>;
 }
 
 export default App;
