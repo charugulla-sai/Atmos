@@ -28,7 +28,7 @@ export default function Map() {
   useEffect(() => {
     // Construct the iframe HTML string with the updated latitude and longitude
     const iframeString = `
-      <div class="sm:w-[100%] h-[100%] rounded-md overflow-hidden ">
+      <div class="w-[100%] h-[100%] rounded-md overflow-hidden ">
         <iframe class="w-full h-full" src="https://maps.google.com/maps?q=${lat},${long}&hl=es&z=13&amp;output=embed"></iframe>
       </div>
     `;
@@ -36,5 +36,5 @@ export default function Map() {
     setIframeHTML(iframeString);
   }, [lat, long]);
 
-  return <div className='sm:col-span-2 w-full hidden sm:block' dangerouslySetInnerHTML={{ __html: iframeHTML }} />;
+  return <div className='md:col-span-6 w-full sm:grow order-last sm:order-2 h-[280px]' dangerouslySetInnerHTML={{ __html: iframeHTML }} />;
 }

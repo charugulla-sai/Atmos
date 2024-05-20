@@ -2,13 +2,13 @@ import cloudy from '../../../img/cloudy.png';
 
 export default function CurrnetWeather() {
   return (
-    <div className="w-full ">
-      <div className="text-gray-50 bg-[#ffffff2b] mx-auto min-w-[240px] sm:max-w-[240px] sm:min-w-0 h-full  flex flex-col justify-center items-center sm:items-start p-4 gap-6 rounded-md">
-        <div className="weather_title_box ">
+    <div className="lg:w-full md:col-span-3 sm:min-w-[240px] sm:grow-0 grow">
+      <div className="text-gray-50 bg-[#ffffff2b] mx-auto  lg:max-w-[240px]  h-full  flex flex-col justify-center items-center lg:p-4 gap-6 rounded-md ">
+        <div className="weather_title_box flex gap-7 items-center justify-start">
           <h2 className="font-bold">Current Weather</h2>
           <p className="text-[12px] text-[#ffffffb9]">11:58 PM</p>
         </div>
-        <div className="weather_details_box flex gap-9">
+        <div className="weather_details_box flex gap-9 ">
           <div className="weather_img_box max-h-20 max-w-20">
             <img className="w-full h-full" src={cloudy} alt="weather image" />
           </div>
@@ -40,7 +40,7 @@ export default function CurrnetWeather() {
                 />
               </svg>
             </div>
-            <p className="text-[12px]">6 km/h</p>
+            <p className="text-[12px]">6 <span className='text-[9px]'>km/h</span></p>
           </div>
           <div className="flex flex-col gap-2 items-center justify-center">
             <div className="icon_box h-5 w-5">
@@ -59,7 +59,7 @@ export default function CurrnetWeather() {
                 ></path>
               </svg>
             </div>
-            <p className="text-[12px]">6 km/h</p>
+            <p className="text-[12px]">6 <span className='text-[9px]'>km/h</span></p>
           </div>
           <div className="flex flex-col gap-2 items-center justify-center">
             <div className="icon_box w-5 h-5">
@@ -83,7 +83,7 @@ export default function CurrnetWeather() {
                 />
               </svg>
             </div>
-            <p className="text-[12px]">6 km/h</p>
+            <p className="text-[12px]">6 <span className='text-[9px]'>km/h</span></p>
           </div>
           <div className="flex flex-col gap-2 items-center justify-center">
             <div className="icon_box w-5 h-5">
@@ -99,7 +99,7 @@ export default function CurrnetWeather() {
                 <path d="M8.462 18.293l-.29-.002c-.6-.004-1.043-.007-1.259-.007-1.119 0-1.182-1.015-.34-1.734l.196-.164.508-.425 1.543-1.292c1.014-.846 1.74-1.45 2.073-1.723.735-.601 1.305-.596 2.033.022.387.329.959.805 2.207 1.841a377.936 377.936 0 0 1 2.18 1.816c.796.67.742 1.66-.295 1.66h-2.382v1.77c0 .83-.393 1.223-1.258 1.223h-2.994c-.809 0-1.258-.42-1.258-1.207v-1.773l-.664-.005zm0-12.807l-.29.002c-.6.004-1.043.006-1.259.006-1.119 0-1.182 1.016-.34 1.734l.196.164.508.426 1.543 1.29a348.68 348.68 0 0 0 2.073 1.724c.735.601 1.305.596 2.033-.022.387-.328.959-.805 2.207-1.84a377.937 377.937 0 0 0 2.18-1.817c.796-.67.742-1.659-.295-1.659h-2.382v-1.77c0-.832-.393-1.224-1.258-1.224h-2.994c-.809 0-1.258.42-1.258 1.207V5.48l-.664.005z"></path>
               </svg>
             </div>
-            <p className="text-[12px]">6 km/h</p>
+            <p className="text-[12px]">6 <span className='text-[9px]'>km/h</span></p>
           </div>
         </div>
       </div>

@@ -5,7 +5,7 @@ import PopularCities from './Popular Cities/PopularCities';
 
 export default function Overview() {
   return (
-    <div className="grid gap-3 sm:grid-cols-4 grid-cols-2 px-4 mx-auto">
+    <div className="lg:grid gap-2 lg:grid-cols-12 px-4 mx-auto max-w-[1100px] flex sm:flex-nowrap flex-wrap justify-center">
       <CurrnetWeather />
       <Map />
       <PopularCities />
