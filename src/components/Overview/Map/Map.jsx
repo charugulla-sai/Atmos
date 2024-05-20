@@ -36,5 +36,5 @@ export default function Map() {
     setIframeHTML(iframeString);
   }, [lat, long]);
 
-  return <div className='md:col-span-6 w-full sm:grow order-last sm:order-2 h-[280px]' dangerouslySetInnerHTML={{ __html: iframeHTML }} />;
+  return <div className='map_component md:col-span-6 w-full sm:grow order-last sm:order-2 h-[280px]' dangerouslySetInnerHTML={{ __html: iframeHTML }} />;
 }
