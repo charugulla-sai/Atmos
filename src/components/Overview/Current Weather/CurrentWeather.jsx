@@ -1,6 +1,39 @@
+import { useState } from 'react';
 import cloudy from '../../../img/cloudy.png';
+import { useEffect } from 'react';
+import axios from 'axios';
 
-export default function CurrnetWeather() {
+export default function CurrnetWeather({setLat, setLong}) {
+  const [currentTemp, setCurrentTemp] = useState(28);
+  const [windSpeed, setWindSpeed] = useState(10);
+  const [humidity, setHumidity] = useState(50);
+  const [visibility, setVisibility] = useState(9);
+  const [pressure, setPressure] = useState(1000);
+  const [status, setStatus] = useState('Sunny')
+  const [icon, setIcon] = useState(cloudy)
+
+  useEffect(() => {
+    async function getCurrentReport() {
+      try {
+        const response = await axios.get(
+          'http://api.weatherapi.com/v1/current.json?key=4b03e9f34a364637ba424857242005&q=Nizampatnam&aqi=yes'
+        );
+        setCurrentTemp(response.data.current.feelslike_c)
+        setHumidity(response.data.current.humidity)
+        setPressure(response.data.current.pressure_mb)
+        setWindSpeed(response.data.current.wind_kph)
+        setVisibility(response.data.current.vis_km)
+        setLat(response.data.location.lat)
+        setLong(response.data.location.lon)
+        setStatus(response.data.current.condition.text)
+        // setIcon(response.data.current.condition.icon.substr(2))  
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    getCurrentReport();
+  }, []);
+
   return (
     <div className="lg:w-full md:col-span-3 sm:min-w-[240px] sm:grow-0 grow">
       <div className="text-gray-50 bg-[#ffffff2b] mx-auto  lg:max-w-[240px]  h-full  flex flex-col justify-center items-center  gap-6 rounded-md p-4">
@@ -10,16 +43,16 @@ export default function CurrnetWeather() {
         </div>
         <div className="weather_details_box flex gap-9 ">
           <div className="weather_img_box max-h-20 max-w-20">
-            <img className="w-full h-full" src={cloudy} alt="weather image" />
+            <img className="w-full h-full" src={icon} alt="weather image" />
           </div>
           <div className="weather_temp_box ">
-            <p className="text-[54px] font-semibold relative">
-              24{' '}
-              <span className="absolute top-0 text-[18px] right-0 font-normal">
+            <p className="text-[40px] font-semibold relative">
+              {currentTemp}
+              <span className="absolute top-[-5px] text-[14px] right-[-10px] font-normal">
                 &deg;C
               </span>
             </p>
-            <p className="text-sm text-[#ffffffd4] mt-[-12px]">Heavy Rain</p>
+            <p className="text-sm text-[#ffffffd4] mt-[-12px]">{status}</p>
           </div>
         </div>
         <div className="flex gap-4 items-center">
@@ -40,7 +73,9 @@ export default function CurrnetWeather() {
                 />
               </svg>
             </div>
-            <p className="text-[12px]">6 <span className='text-[9px]'>km/h</span></p>
+            <p className="text-[12px]">
+              {windSpeed} <span className="text-[9px]">km/h</span>
+            </p>
           </div>
           <div className="flex flex-col gap-2 items-center justify-center">
             <div className="icon_box h-5 w-5">
@@ -59,7 +94,9 @@ export default function CurrnetWeather() {
                 ></path>
               </svg>
             </div>
-            <p className="text-[12px]">6 <span className='text-[9px]'>km/h</span></p>
+            <p className="text-[12px]">
+              {humidity} <span className="text-[11px]">%</span>
+            </p>
           </div>
           <div className="flex flex-col gap-2 items-center justify-center">
             <div className="icon_box w-5 h-5">
@@ -83,7 +120,9 @@ export default function CurrnetWeather() {
                 />
               </svg>
             </div>
-            <p className="text-[12px]">6 <span className='text-[9px]'>km/h</span></p>
+            <p className="text-[12px]">
+              {visibility} <span className="text-[9px]">km</span>
+            </p>
           </div>
           <div className="flex flex-col gap-2 items-center justify-center">
             <div className="icon_box w-5 h-5">
@@ -99,7 +138,9 @@ export default function CurrnetWeather() {
                 <path d="M8.462 18.293l-.29-.002c-.6-.004-1.043-.007-1.259-.007-1.119 0-1.182-1.015-.34-1.734l.196-.164.508-.425 1.543-1.292c1.014-.846 1.74-1.45 2.073-1.723.735-.601 1.305-.596 2.033.022.387.329.959.805 2.207 1.841a377.936 377.936 0 0 1 2.18 1.816c.796.67.742 1.66-.295 1.66h-2.382v1.77c0 .83-.393 1.223-1.258 1.223h-2.994c-.809 0-1.258-.42-1.258-1.207v-1.773l-.664-.005zm0-12.807l-.29.002c-.6.004-1.043.006-1.259.006-1.119 0-1.182 1.016-.34 1.734l.196.164.508.426 1.543 1.29a348.68 348.68 0 0 0 2.073 1.724c.735.601 1.305.596 2.033-.022.387-.328.959-.805 2.207-1.84a377.937 377.937 0 0 0 2.18-1.817c.796-.67.742-1.659-.295-1.659h-2.382v-1.77c0-.832-.393-1.224-1.258-1.224h-2.994c-.809 0-1.258.42-1.258 1.207V5.48l-.664.005z"></path>
               </svg>
             </div>
-            <p className="text-[12px]">6 <span className='text-[9px]'>km/h</span></p>
+            <p className="text-[12px]">
+              {pressure} <span className="text-[9px]">Mb</span>
+            </p>
           </div>
         </div>
       </div>

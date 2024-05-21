@@ -1,3 +1,36 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.forecast_days::-webkit-scrollbar {
+  width: 4px;
+  scroll-behavior: smooth;
+}
+
+
+.forecast_days::-webkit-scrollbar-track {
+  /* Set visibility to hidden by default */
+  /* visibility: hidden; */
+  box-shadow: inset 0 0 5px #ffffffe2; 
+  border-radius: 10px;
+}
+
+/* Display track on handle hover */
+.forecast_days:hover::-webkit-scrollbar-track{
+  visibility: visible;
+}
+ 
+/* Handle */
+
+.forecast_days::-webkit-scrollbar-thumb {
+  background: #ffffff98; 
+  border-radius: 10px;
+  transition: all 3s ease-in-out;
+}
+
+/* Handle on hover */
+
+.forecast_days::-webkit-scrollbar-thumb:hover {
+  background: #fff; 
+}

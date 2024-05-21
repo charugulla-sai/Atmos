@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-export default function Map() {
-  const [lat, setLat] = useState(17.4343);
-  const [long, setLong] = useState(78.3792);
+export default function Map({lat,long}) {
   const [iframeHTML, setIframeHTML] = useState('');
 
   useEffect(() => {

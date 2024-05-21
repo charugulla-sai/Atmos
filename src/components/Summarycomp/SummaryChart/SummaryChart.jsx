@@ -9,54 +9,19 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 
-export default function SummaryChart() {
-  const data = [
-    {
-      name: 'Page A',
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
-    },
-    {
-      name: 'Page B',
-      uv: 3000,
-      pv: 1398,
-      amt: 2210,
-    },
-    {
-      name: 'Page C',
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
-    },
-    {
-      name: 'Page D',
-      uv: 2780,
-      pv: 3908,
-      amt: 2000,
-    },
-    {
-      name: 'Page E',
-      uv: 1890,
-      pv: 4800,
-      amt: 2181,
-    },
-    {
-      name: 'Page F',
-      uv: 2390,
-      pv: 3800,
-      amt: 2500,
-    },
-    {
-      name: 'Page G',
-      uv: 3490,
-      pv: 4300,
-      amt: 2100,
-    },
-  ];
+export default function SummaryChart({ forcastDay, date }) {
+  const data = forcastDay.map((hour) => {
+    return {
+      exactTime: hour.time.substring(11),
+      todayDate: hour.time.substring(0, 11),
+      ...hour,
+    };
+  });
+  console.log(data);
 
   return (
-    <div className='min-w-[500px] min-h-[260px] grow bg-[#ffffff2b] rounded-md'>
+    <div className="w-full min-h-[260px] grow bg-[#ffffff2b] rounded-md relative">
+      <p className="absolute top-[10%] left-[50%] translate-x-[-50%] text-white">{date}</p>
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart
           // width={500}
@@ -70,30 +35,68 @@ export default function SummaryChart() {
           }}
         >
           {/* <CartesianGrid strokeDasharray="3 3" /> */}
-          <XAxis dataKey="name" />
-          <YAxis />
+          <defs>
+            <linearGradient id="heatIndexC" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#f9a620" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="#f9a620" stopOpacity={0} />
+            </linearGradient>
+            <linearGradient id="willItRain" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="green" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="green" stopOpacity={0} />
+            </linearGradient>
+            <linearGradient id="humidity" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#00b7ff" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="#00b7ff" stopOpacity={0} />
+            </linearGradient>
+            <linearGradient id="visibility" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#ffffffe2" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="#ffffffe2" stopOpacity={0} />
+            </linearGradient>
+          </defs>
+          <XAxis dataKey="exactTime" />
+          {/* <YAxis /> */}
           <Tooltip />
           <Area
             type="monotone"
-            dataKey="uv"
-            stackId="1"
-            stroke="#8884d8"
-            fill="#8884d8"
+            dataKey="humidity"
+            // stackId="1"
+            stroke="#00b7ff"
+            fillOpacity={1}
+            fill="url(#humidity)"
           />
           <Area
             type="monotone"
-            dataKey="pv"
-            stackId="1"
-            stroke="#82ca9d"
-            fill="#82ca9d"
+            dataKey="heatindex_c"
+            // stackId="1"
+            stroke="#f9a620"
+            fillOpacity={1}
+            fill="url(#heatIndexC)"
           />
           <Area
             type="monotone"
-            dataKey="amt"
-            stackId="1"
-            stroke="#ffc658"
-            fill="#ffc658"
+            dataKey="will_it_rain"
+            // stackId="1"
+            stroke="green"
+            fillOpacity={1}
+            fill="url(#willItRain)"
           />
+
+          <Area
+            type="monotone"
+            dataKey="vis_km"
+            // stackId="1"
+            stroke="#ffffffe2"
+            fillOpacity={1}
+            fill="url(#visibility)"
+          />
+          {/*
+          <Area
+            type="monotone"
+            dataKey="snow_cm"
+            // stackId="1"
+            stroke="yellow"
+            fill="yellow"
+          />*/}
         </AreaChart>
       </ResponsiveContainer>
     </div>
