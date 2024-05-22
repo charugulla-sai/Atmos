@@ -89,14 +89,6 @@ export default function SummaryChart({ forcastDay, date }) {
             fillOpacity={1}
             fill="url(#visibility)"
           />
-          {/*
-          <Area
-            type="monotone"
-            dataKey="snow_cm"
-            // stackId="1"
-            stroke="yellow"
-            fill="yellow"
-          />*/}
         </AreaChart>
       </ResponsiveContainer>
     </div>
