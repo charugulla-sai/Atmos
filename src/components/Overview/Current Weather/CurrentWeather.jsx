@@ -16,7 +16,7 @@ export default function CurrnetWeather({setLat, setLong}) {
     async function getCurrentReport() {
       try {
         const response = await axios.get(
-          'http://api.weatherapi.com/v1/current.json?key=4b03e9f34a364637ba424857242005&q=Nizampatnam&aqi=yes'
+          'https://api.weatherapi.com/v1/current.json?key=4b03e9f34a364637ba424857242005&q=Nizampatnam&aqi=yes'
         );
         setCurrentTemp(response.data.current.feelslike_c)
         setHumidity(response.data.current.humidity)

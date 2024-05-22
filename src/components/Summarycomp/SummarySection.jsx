@@ -1263,7 +1263,7 @@ export default function Summary() {
     async function getCurrentReport() {
       try {
         const response = await axios.get(
-          `http://api.weatherapi.com/v1/forecast.json?key=4b03e9f34a364637ba424857242005&q=nizampatnam&days=${forcastDays}&aqi=yes&alerts=no`
+          `https://api.weatherapi.com/v1/forecast.json?key=4b03e9f34a364637ba424857242005&q=nizampatnam&days=${forcastDays}&aqi=yes&alerts=no`
         );
         setForeCast(response.data.forecast.forecastday);
         setDate(response.data.forecast.forecastday[0].date)
