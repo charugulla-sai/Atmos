@@ -25,7 +25,7 @@ export default function Summary() {
     getCurrentReport();
   }, [forcastDays]);
   return (
-    <div className="flex max-w-[1100px] mx-auto p-4 gap-3">
+    <div className="flex max-w-[1100px] mx-auto p-4 gap-3 mb-8">
       <Forecast forecast={forecast} setForecastDays={setForecastDays} setForecastDay={setForecastDay} setDate={setDate}/>
       <SummaryChart date={date} forcastDay={forcastDay} />
     </div>
