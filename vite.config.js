@@ -7,7 +7,8 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://example.com/realApi', // Replace with your API server URL
+        target: `
+        http://api.weatherapi.com/v1/forecast.json`, // Replace with your API server URL
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path.replace(/^\/api/, ''),
